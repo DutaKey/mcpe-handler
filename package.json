@@ -2,6 +2,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "github:adiwajshing/baileys",
     "bedrock-protocol": "^3.22.0",
+    "bedrock-server": "^3.2.1",
     "qrcode-terminal": "^0.12.0"
   }
 }

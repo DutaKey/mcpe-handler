@@ -8,6 +8,7 @@ const Pino = require("pino");
 const path = require("path").join;
 const { Boom } = require("@hapi/boom");
 const bedrock = require('bedrock-protocol')
+const { serialize } = require("./serialize");
 const deathTranslations =  {
   'death.attack.anvil': `%1% was squashed by a falling anvil`,
   'death.attack.arrow': `%1% was shot by %2%`,
@@ -112,7 +113,7 @@ const connect = async () => {
       }
     }
     
-    client.on('text', (packet) => { // Listen for chat messages and echo them back.
+    client.on('text', (packet) => {
       if (packet.type === "translation") {
         if (!packet.message.startsWith("death")) {
             if (packet.message.endsWith("joined")) {
@@ -125,6 +126,19 @@ const connect = async () => {
         }
       }
     })
+    // sock.ev.on("messages.upsert", async (m) => {
+    //   if (m.type !== "notify") return;
+    //   let msg = serialize(JSON.parse(JSON.stringify(m.messages[0])), sock);
+    //   if (!msg.message) return;
+    //   if (msg.key && msg.key.remoteJid === "status@broadcast") return;
+    //   if (msg.type === "protocolMessage" || msg.type === "senderKeyDistributionMessage" || !msg.type || msg.type === "" ) return;
+    //   const { bodi } = msg;
+    //   chat = bodi.toLowerCase()
+    //   const { from, sender, isGroup } = msg;
+    //   if(chat == "#serverstat"){
+        
+    //   }
+    // });
 };
 connect();
 
