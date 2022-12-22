@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@adiwajshing/baileys": "github:adiwajshing/baileys",
+    "bedrock-protocol": "^3.22.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
